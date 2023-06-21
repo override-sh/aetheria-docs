@@ -69,7 +69,7 @@ const config = {
 					},
 				],
 			},
-			footer: {
+			footer:          {
 				style:     "dark",
 				links:     [
 					{
@@ -114,9 +114,19 @@ const config = {
 				],
 				copyright: `Copyright © ${ new Date().getFullYear() } Override.`,
 			},
-			prism:  {
+			prism:           {
 				theme:     lightCodeTheme,
 				darkTheme: darkCodeTheme,
+			},
+			docs:            {
+				sidebar: {
+					hideable:               true,
+					autoCollapseCategories: true,
+				},
+			},
+			tableOfContents: {
+				minHeadingLevel: 2,
+				maxHeadingLevel: 4,
 			},
 		}),
 };
