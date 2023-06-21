@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Introduction
+# Getting started
 
 Welcome to the comprehensive documentation of Aetheria!
 This guide will assist you in getting started with our powerful content management system and empower you to create
@@ -85,17 +85,28 @@ Let's address the main problems of the competitors one by one:
   official marketplace -* each plugin is reviewed by the Aetheria's team to ensure that it is secure and compatible with
   the latest version of the CMS.
   Additionally, plugins:
-  - Are analyzed in order to extract a permission list that the user can review before installing the plugin.
-  - Are analyzed in order to extract a list of the plugin's hooks it attaches to.
-  - Are analyzed in order to extract a list of security sensitive operations they are likely to perform.
+	- Are analyzed in order to extract a permission list that the user can review before installing the plugin.
+	- Are analyzed in order to extract a list of the plugin's hooks it attaches to.
+	- Are analyzed in order to extract a list of security sensitive operations they are likely to perform.
 - **Performance**: Aetheria's is a 2 tier CMS, meaning that it is composed of a headless-backend and a frontend.
-  The backend is a headless CMS *- powered by [NestJs](https://nestjs.com/) -*, meaning that it is only responsible for
-  managing the content and exposing it through an API. <br/>
-  The frontend instead is a SPA (Single Page Application) *- powered by [Next.js](https://nextjs.org/) -* that consumes
-  the API and renders the content. <br/>
-  This architecture allows for a much better performance than the traditional CMSs and allows for the frontend to be
-  hosted on a CDN (Content Delivery Network) for even better performance.
-  Additionally, the 2 tier architecture allows for the frontend to be hosted on a different server than the backend, or
-  even on-premise allowing for limitless scalability .
+  The backend is a headless CMS, meaning that it is only responsible for managing the content and exposing it through an
+  API.
+  The frontend is a SPA (Single Page Application) that consumes the API and renders the content.
+  This architecture allows for a much better performance than the traditional CMSs.
 
+## Start your site
 
+Run the development server:
+
+```bash
+cd my-website
+npm run start
+```
+
+The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site,
+you'll need to navigate the terminal there.
+
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to
+view at http://localhost:3000/.
+
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
