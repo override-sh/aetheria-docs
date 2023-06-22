@@ -1,0 +1,502 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting started
+
+Welcome to the Aetheria "Getting Started" Documentation!
+
+This guide is your gateway to unlocking the full potential of Aetheria, a powerful and extensible content management
+system (CMS).
+Whether you're a beginner or an experienced developer, this documentation will provide you with the essential knowledge
+to get up and running with Aetheria in no time.
+
+In this guide, you will learn how to install Aetheria, configure its settings, and explore its user-friendly interface.
+We will walk you through the process of creating and managing content, customizing your website's appearance and
+extending functionality through plugins.
+
+Discover advanced features such as custom post types, taxonomies, and custom page templates, allowing you to tailor your
+website precisely to your needs.
+We'll also cover important topics like security best practices, performance optimization, troubleshooting, and upgrading
+Aetheria.
+
+Whether you're a blogger, business owner, or developer, Aetheria provides the tools and flexibility to create stunning
+websites that engage and captivate your audience.
+Let's dive in and embark on an exciting journey with Aetheria!
+
+:::note
+If you encounter any challenges along the way, our dedicated support channels and community forums are here to
+assist you. Now, let's get started and unleash the potential of Aetheria!
+:::
+
+### Brief overview of Aetheria's features and benefits
+
+Aetheria is an innovative and powerful content management system (CMS) designed to empower website creators with
+limitless possibilities.
+Let's try to summarize its key features and benefits:
+
+- **Robust Platform**: Aetheria offers a solid foundation for building and managing websites, providing advanced
+  features such as an extensible plugin architecture, intuitive content management, and responsive design.
+- **Enhanced Security**: Aetheria prioritizes security by following the latest technologies and standards.
+  The CMS undergoes regular security reviews, and plugins listed on the marketplace are carefully reviewed for security
+  and compatibility.
+- **Exceptional Performance**: Aetheria adopts a two-tier architecture, with a headless backend for content management
+  and a frontend powered by [Next.js](https://nextjs.org/).
+  This setup ensures excellent performance and scalability, allowing for the frontend to be hosted on a CDN for optimal
+  speed.
+- **Customization and Design Flexibility**: With Aetheria, you have the freedom to customize your website's frontend
+  using any framework or opt for the default one.
+  The built-in block editor, powered by [GrapeJs](https://grapesjs.com/), offers extensive flexibility and customization
+  options for content creation.
+- **Extensive Plugin Ecosystem**: Aetheria's marketplace provides a wide range of plugins developed by the community.
+  Each plugin undergoes a review process to ensure security and compatibility with the latest version of the CMS.
+- **User-Friendly Interface**: Aetheria is designed to be simple and easy to use, making it accessible for beginners
+  while offering powerful features for advanced users.
+  Its intuitive dashboard and content management system streamline the website creation and editing process.
+- **Future Plans**: Aetheria is continuously evolving, with plans to introduce a plugin sandbox for enhanced security,
+  plugin marketplace, on premise installation, migrators and much much more.
+
+Experience the innovation, security, and flexibility of Aetheria as you create exceptional online experiences.
+Unleash your creativity and build websites that stand out with Aetheria's feature-rich CMS.
+
+### Target audience
+
+Aetheria is a versatile CMS that can be used by a wide range of users, including web developers, content creators,
+small business owners, agencies, and freelancers.
+Let's take a closer look at the target audience and prerequisites for using Aetheria.
+
+#### Web Developers
+
+Aetheria is ideal for web developers who want to create dynamic and interactive websites with ease.
+Whether you're an experienced developer or just starting out, Aetheria provides a powerful platform that allows you to
+leverage your coding skills and customize every aspect of your website.
+
+#### Content Creators
+
+Aetheria is also suitable for content creators who want to manage and publish their content without
+relying on technical expertise.
+With its intuitive content management system and user-friendly interface, Aetheria empowers content creators to focus on
+crafting engaging content while ensuring a seamless publishing process.
+
+#### Small Business Owners
+
+Small business owners who want to establish a professional online presence can benefit from Aetheria's user-friendly
+features.
+Even without technical knowledge, they can easily build and manage their websites, showcasing their products or services
+to a wider audience.
+
+#### Agencies and Freelancers
+
+Aetheria is an excellent choice for agencies and freelancers working on client projects.
+Its versatility and customization options allow them to create tailored solutions for their clients, meeting their
+specific requirements and delivering high-quality websites and appliances.
+
+### Prerequisites
+
+Prerequisites for using Aetheria strongly depend on your use case and level of expertise.
+None of the prerequisites are mandatory, but they can help you get the most out of Aetheria.
+
+The plugin marketplace offers a wide range of plugins that can help you achieve your goals without any additional
+effort.
+
+Let's take a look at some of the prerequisites that will help you get the most out of Aetheria:
+
+- **Basic Web Development Knowledge**: While Aetheria offers a user-friendly interface, having a foundational
+  understanding of web development concepts such as HTML and CSS will help you make the most out of the customization
+  options and advanced features.
+- **Familiarity with Node.js and React**: Aetheria's backend is built on Nest.js (a Node.js framework) and the frontend
+  utilizes Next.js (a React framework).
+  Having a basic understanding of these technologies will enable you to better navigate and customize Aetheria's
+  architecture and develop tailored plugins.
+- **Server Environment**: To deploy and host Aetheria, you will need a server environment that supports Node.js and the
+  required dependencies.
+  This can be a local development environment or a hosting provider that supports Node.js applications.
+
+:::info
+Aetheria's comprehensive documentation and supportive community can help users at various skill levels get started
+and navigate through any prerequisites they may not be familiar with, ensuring a smooth onboarding process.
+:::
+
+## Installation
+
+In this section, we will walk you through the process of installing Aetheria on your local machine or server.
+We will also cover alternative installation methods such as Docker and package managers.
+
+:::note
+Development setup differs from production setup, consider cloning the
+[official Aetheria monorepo](https://github.com/override-sh/aetheria) for development purposes.
+:::
+
+### System requirements for running Aetheria
+
+Aetheria requires the following dependencies to be installed on your system:
+
+- Node.js (latest LTS or higher) <sup>1</sup>
+- Node package manager <sup>2</sup>
+- MongoDB <sup>3</sup>
+- Unix-like operating system (Linux, macOS, WSL, etc.) <sup>4</sup>
+- NestJs cli (headless only) <sup>5</sup>
+
+:::note Notes on requirements
+<details>
+<summary>Node.js <sup>1</sup></summary>
+
+Node.js is a JavaScript runtime environment that allows you to run JavaScript code outside a browser.
+You can download the latest version of Node.js from the official [Node.js website](https://nodejs.org/en/) or
+using [nvm](https://github.com/nvm-sh/nvm) (**suggested**)
+
+</details>
+<details>
+<summary>Node package manager <sup>2</sup></summary>
+
+There are many node package managers the most commonly used are `npm`, `yarn` and `pnpm`. You can install
+`npm` by installing Node.js or by following the instructions on the official [npm website](https://www.npmjs.com/).
+
+Alternatively, you can install `yarn` by following the instructions on the official
+[yarn website](https://yarnpkg.com/).
+
+Currently, `pnpm` is not officially supported by Aetheria due to its way of managing deeply nested dependencies,
+this
+may change in the future as we strongly think that Aetheria will benefit from `pnpm` powerful tree reorganization.
+
+</details>
+<details>
+<summary>MongoDB <sup>3</sup></summary>
+
+Currently Aetheria only supports MongoDB as a database, you can install MongoDB by following the instructions on the
+official [MongoDB website](https://www.mongodb.com/).
+
+Even though MongoDB can be installed on a local machine we strongly discourage this practice as it is not secure and
+will not scale well, instead we suggest using a cloud provider such
+as [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+for production environments or using the attached `docker-compose.yml` file for development environments.
+
+</details>
+<details>
+<summary>Unix-like operating system <sup>4</sup></summary>
+
+Aetheria is built on top of two frameworks, Nest.js and Next.js, as they are both built on top of Node.js they are
+platform-agnostic, however, due to the optimization made by Aetheria's to the plugin system, we strongly suggest
+using
+a Unix-like operating system such as Linux, macOS or WSL.
+
+One of the main reasons for this is that Aetheria uses symlinks to link plugins to the main application, this may
+not
+be fully supported on Windows and may require additional configuration.
+
+This is valid for development but is mostly a strict requirement for production environments.
+
+</details>
+<details>
+<summary>NestJs cli <sup>5</sup></summary>
+
+The NestJs cli is a command-line interface that allows you to generate NestJs applications and modules, it eases
+the development process by providing a set of commands that can be used to generate boilerplate code and manage
+dependencies, build the app and start development server.
+This is only required for the headless version of Aetheria, you can install it by running the following command:
+
+```bash
+npm install -g @nestjs/cli
+```
+
+</details>
+:::
+
+### Step-by-step installation guide
+
+#### 1. Clone the repository
+
+Depending on your requirements, you can clone the official Aetheria monorepo, the Aetheria frontend repository or the
+headless one.
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+git clone --recurse-submodule git@github.com:override-sh/aetheria.git
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+git clone git@github.com:override-sh/aetheria-frontend.git
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+git clone git@github.com:override-sh/aetheria-headless.git
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+In order to clone the repositories you must have [git](https://git-scm.com/downloads) installed on your system.
+:::
+
+#### 2. Install dependencies
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+cd aetheria/aetheria-frontend
+npm install
+
+# In a separate terminal
+cd aetheria/aetheria-headless
+npm install
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+cd aetheria-frontend
+npm install
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+cd aetheria-headless
+npm install
+```
+
+</TabItem>
+</Tabs>
+
+#### 3. Configure the application
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+cp ./apps/frontend/.env.example ./apps/frontend/.env
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory
+cp .env.example .env
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+cp ./apps/frontend/.env.example ./apps/frontend/.env
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory
+cp .env.example .env
+```
+
+</TabItem>
+</Tabs>
+
+#### 4. Build the application
+
+:::note
+This step is only required for production environments, for development environments you can skip this step.
+:::
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:export
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run build
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:export
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run build
+```
+
+</TabItem>
+</Tabs>
+
+#### 5. Start the application
+
+<details open>
+<summary>Production environment</summary>
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve:production
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start:prod
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve:production
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start:prod
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+<details>
+<summary>Development environment</summary>
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+### Alternative installation methods (e.g., Docker, package managers)
+
+## Configuration
+
+### Initial setup and configuration options
+
+### Database setup and connection
+
+### Setting up administrative credentials
+
+## Basic Usage
+
+### Logging into the Aetheria dashboard
+
+### Overview of the user interface and navigation
+
+### Creating and managing content (pages, posts, media, etc.)
+
+## Customization
+
+### Exploring Aetheria's theme collection
+
+### Installing and activating themes
+
+### Customizing themes (colors, layouts, typography)
+
+## Extending Functionality
+
+### Introduction to Aetheria's plugin system
+
+### Installing and activating plugins
+
+### Exploring popular plugins and their use cases
+
+## Advanced Features
+
+### Leveraging Aetheria's advanced features (custom post types, taxonomies, etc.)
+
+### Creating custom page templates
+
+### Implementing advanced functionality using plugins or custom development
+
+## Security Best Practices
+
+### Essential security measures for securing your Aetheria installation
+
+### Regularly updating Aetheria, themes, and plugins
+
+### Recommended security plugins and practices
+
+## Performance Optimization
+
+### Identifying performance bottlenecks in Aetheria
+
+### Caching strategies and optimizations
+
+### Tips for optimizing website performance and loading speed
+
+## Troubleshooting and Support
+
+### Common issues and their solutions
+
+### Finding help and support resources (forums, documentation, community)
+
+## Migration and Upgrades
+
+### Migrating from other CMS platforms to Aetheria
+
+### Upgrading Aetheria to the latest version
+
+### Handling data and content migration
+
+## Conclusion and Next Steps
+
+### Recap of the key steps covered in the documentation
+
+### Encouraging users to explore Aetheria's features and create amazing websites
+
+### Additional resources and recommended next steps for further learning
