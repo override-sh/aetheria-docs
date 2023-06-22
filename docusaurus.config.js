@@ -4,6 +4,8 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
+const img_to_figure = require("./src/remark/img-to-figure")
+
 /** @type {import("@docusaurus/types").Config} */
 const config = {
 	title:   "Aetheria Docs",
@@ -35,6 +37,9 @@ const config = {
 				docs:  {
 					sidebarPath:   require.resolve("./sidebars.js"),
 					routeBasePath: "/",
+					remarkPlugins: [
+						img_to_figure,
+					],
 				},
 				blog:  false,
 				theme: {
@@ -48,8 +53,8 @@ const config = {
 	/** @type {import("@docusaurus/preset-classic").ThemeConfig} */
 		({
 			// Replace with your project's social card
-			image:  "img/docusaurus-social-card.jpg",
-			navbar: {
+			image:           "img/docusaurus-social-card.jpg",
+			navbar:          {
 				title: "Aetheria Docs",
 				logo:  {
 					alt: "Aetheria Logo",
