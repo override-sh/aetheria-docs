@@ -1,0 +1,339 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+In this section, we will walk you through the process of installing Aetheria on your local machine or server.
+We will also cover alternative installation methods such as Docker and package managers.
+
+:::note
+Development setup differs from production setup, consider cloning the
+[official Aetheria monorepo](https://github.com/override-sh/aetheria) for development purposes.
+:::
+
+## System requirements for running Aetheria
+
+Aetheria requires the following dependencies to be installed on your system:
+
+- Node.js (latest LTS or higher) <sup>1</sup>
+- Node package manager <sup>2</sup>
+- MongoDB <sup>3</sup>
+- Unix-like operating system (Linux, macOS, WSL, etc.) <sup>4</sup>
+- NestJs cli (headless only) <sup>5</sup>
+
+:::note Notes on requirements
+<details>
+<summary>Node.js <sup>1</sup></summary>
+
+Node.js is a JavaScript runtime environment that allows you to run JavaScript code outside a browser.
+You can download the latest version of Node.js from the official [Node.js website](https://nodejs.org/en/) or
+using [nvm](https://github.com/nvm-sh/nvm) (**suggested**)
+
+</details>
+<details>
+<summary>Node package manager <sup>2</sup></summary>
+
+There are many node package managers the most commonly used are `npm`, `yarn` and `pnpm`. You can install
+`npm` by installing Node.js or by following the instructions on the official [npm website](https://www.npmjs.com/).
+
+Alternatively, you can install `yarn` by following the instructions on the official
+[yarn website](https://yarnpkg.com/).
+
+Currently, `pnpm` is not officially supported by Aetheria due to its way of managing deeply nested dependencies,
+this
+may change in the future as we strongly think that Aetheria will benefit from `pnpm` powerful tree reorganization.
+
+</details>
+<details>
+<summary>MongoDB <sup>3</sup></summary>
+
+Currently Aetheria only supports MongoDB as a database, you can install MongoDB by following the instructions on the
+official [MongoDB website](https://www.mongodb.com/).
+
+Even though MongoDB can be installed on a local machine we strongly discourage this practice as it is not secure and
+will not scale well, instead we suggest using a cloud provider such
+as [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+for production environments or using the attached `docker-compose.yml` file for development environments.
+
+</details>
+<details>
+<summary>Unix-like operating system <sup>4</sup></summary>
+
+Aetheria is built on top of two frameworks, Nest.js and Next.js, as they are both built on top of Node.js they are
+platform-agnostic, however, due to the optimization made by Aetheria's to the plugin system, we strongly suggest
+using
+a Unix-like operating system such as Linux, macOS or WSL.
+
+One of the main reasons for this is that Aetheria uses symlinks to link plugins to the main application, this may
+not
+be fully supported on Windows and may require additional configuration.
+
+This is valid for development but is mostly a strict requirement for production environments.
+
+</details>
+<details>
+<summary>NestJs cli <sup>5</sup></summary>
+
+The NestJs cli is a command-line interface that allows you to generate NestJs applications and modules, it eases
+the development process by providing a set of commands that can be used to generate boilerplate code and manage
+dependencies, build the app and start development server.
+This is only required for the headless version of Aetheria, you can install it by running the following command:
+
+```bash
+npm install -g @nestjs/cli
+```
+
+</details>
+:::
+
+## Step-by-step installation guide
+
+### 1. Clone the repository
+
+Depending on your requirements, you can clone the official Aetheria monorepo, the Aetheria frontend repository or the
+headless one.
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+git clone --recurse-submodule git@github.com:override-sh/aetheria.git
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+git clone git@github.com:override-sh/aetheria-frontend.git
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+git clone git@github.com:override-sh/aetheria-headless.git
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+In order to clone the repositories you must have [git](https://git-scm.com/downloads) installed on your system.
+:::
+
+### 2. Install dependencies
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+cd aetheria/aetheria-frontend
+npm install
+
+# In a separate terminal
+cd aetheria/aetheria-headless
+npm install
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+cd aetheria-frontend
+npm install
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+cd aetheria-headless
+npm install
+```
+
+</TabItem>
+</Tabs>
+
+### 3. Configure the application
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+cp ./apps/frontend/.env.example ./apps/frontend/.env
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory
+cp .env.example .env
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+cp ./apps/frontend/.env.example ./apps/frontend/.env
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory
+cp .env.example .env
+```
+
+</TabItem>
+</Tabs>
+
+### 4. Build the application
+
+:::note
+This step is only required for production environments, for development environments you can skip this step.
+:::
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:export
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run build
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:export
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run build
+```
+
+</TabItem>
+</Tabs>
+
+### 5. Start the application
+
+<details open>
+<summary>Production environment</summary>
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve:production
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start:prod
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve:production
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start:prod
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+<details>
+<summary>Development environment</summary>
+
+<Tabs defaultValue="monorepo" groupId="repository" queryString="repository">
+<TabItem value="monorepo" label="Monorepo">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve
+
+# In a separate terminal
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# ensure that you are in the aetheria-frontend directory
+npx nx run frontend:serve
+```
+
+</TabItem>
+<TabItem value="headless" label="Headless">
+
+```bash
+# ensure that you are in the aetheria-headless directory and have installed the NestJs cli
+npm run start:cli:seed # this will seed the database with some dummy data
+npm run start
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
+## Alternative installation methods
+
+### Docker
+
+Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.
+Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other
+dependencies, and ship it all out as one package.
+
+As soon as you have installed [Docker](https://docs.docker.com/get-docker/), you can run the following command to start
+the application:
+
+```bash
+docker-compose up
+```
+
+#### Dedicated images
+
+Dedicated images are available for the frontend and the headless application.
+
+You can find them on the [Docker Hub](https://hub.docker.com/u/overridesoft).
+
+### Serverless
+
+Serverless is a cloud computing execution model in which the cloud provider allocates machine resources on demand,
+taking
+care of the servers on behalf of their customers.
+
+Serverless computing does not eliminate servers, but instead seeks to emphasize the idea that computing resource
+considerations can be moved into the background during the design process.
+
+Aetheria (both headless and frontend) is not currently available as a serverless application due to the nature of its plugin system.
