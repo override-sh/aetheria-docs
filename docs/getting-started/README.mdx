@@ -2,6 +2,9 @@
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Getting started
 
 Welcome to the Aetheria "Getting Started" Documentation!
@@ -59,7 +62,10 @@ Let's try to summarize its key features and benefits:
 Experience the innovation, security, and flexibility of Aetheria as you create exceptional online experiences.
 Unleash your creativity and build websites that stand out with Aetheria's feature-rich CMS.
 
-## Aetheria's headless base installation
+## Aetheria's base installation
+
+<Tabs defaultValue="backend" groupId="system" queryString="system">
+<TabItem value="backend" label="Backend">
 
 Aetheria's base installation is a headless CMS that provides a robust foundation for building and managing websites.
 
@@ -100,7 +106,8 @@ layouts or themes, or they can be extended to provide more complex behaviors.
 </details>
 :::
 
-## Aetheria's frontend base installation
+</TabItem>
+<TabItem value="frontend" label="Frontend">
 
 Aetheria's frontend base installation is a Next.js application that provides a robust foundation for building and
 managing websites.
@@ -150,3 +157,6 @@ and `useSafeInject`.
 
 </details>
 :::
+
+</TabItem>
+</Tabs>
