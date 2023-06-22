@@ -58,9 +58,9 @@ const config = {
 				items: [
 					{
 						type:      "docSidebar",
-						sidebarId: "GettingStarted",
+						sidebarId: "Introduction",
 						position:  "left",
-						label:     "Getting Started",
+						label:     "Documentation",
 					},
 					{
 						href:     "https://github.com/override-sh/aetheria-docs",
@@ -75,6 +75,10 @@ const config = {
 					{
 						title: "Docs",
 						items: [
+							{
+								label: "Introduction",
+								to:    "/intro",
+							},
 							{
 								label: "Getting Started",
 								to:    "/getting-started",
