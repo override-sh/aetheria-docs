@@ -1,0 +1,46 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Plugins
+
+Aetheria is a modular system, this means that you can add or remove features by installing or uninstalling plugins.
+
+## Installing plugins
+
+Plugins can be installed by running the following command:
+
+<Tabs defaultValue="backend" groupId="system" queryString="system">
+<TabItem value="backend" label="Backend">
+
+```bash
+# local installation
+nest start cli plugin:install -n <plugin-name> -r <plugin-resolution-path>
+
+# npm installation
+nest start cli plugin:install -n <plugin-name> -N
+
+# tarball installation
+nest start cli plugin:install -n <plugin-name> -r <tarball-plugin-path> -t
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# local installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -r <plugin-resolution-path>
+
+# npm installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -N
+
+# tarball installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -r <tarball-plugin-path> -t
+```
+
+</TabItem>
+</Tabs>
+
