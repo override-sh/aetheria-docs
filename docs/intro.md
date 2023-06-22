@@ -5,44 +5,39 @@ sidebar_position: 1
 # Introduction
 
 Welcome to the comprehensive documentation of Aetheria!
-This guide will assist you in getting started with our powerful content management system and empower you to create
-exceptional websites.
+This documentation will guide and assist you in getting started with our powerful content management system and empower
+you to create exceptional websites.
+
 Whether you're a seasoned developer or a content creator, this documentation will provide you with the necessary
 resources and knowledge to harness the full potential of Aetheria.
 
-In this Getting Started section, we will walk you through the initial steps of setting up Aetheria, exploring its key
-features, and getting your website up and running.
-From installation to customization, we'll cover everything you need to know to kickstart your Aetheria journey.
-
-Before diving into the details, make sure you have the necessary prerequisites in place.
-Familiarity with web technologies, such as HTML, CSS, and JavaScript, will be beneficial but not mandatory.
-Aetheria's intuitive interface and extensive documentation will guide you every step of the way.
+In this introduction, we will walk you through the motivation of Aetheria, exploring some of its key features.
 
 ## What is Aetheria?
 
 Aetheria is an innovative and powerful content management system (CMS) designed to empower website creators with
 limitless possibilities.
 
-It provides a robust platform for building and managing websites, offering advanced features
-like an extensible plugin architecture, unparalleled security measures, intuitive content management, responsive design,
-and much more features will be added soon.
+It provides a robust platform for building and managing websites, offering advanced features like an extensible plugin
+architecture, unparalleled security measures, intuitive content management, responsive design, and much more features
+that will be added soon.
 Aetheria combines innovation, security, and user-friendliness, allowing users to unleash their creativity and deliver
-exceptional online experiences.
+exceptional online experiences
 
 ### Why Aetheria?
 
-Aetheria was created because of the lack of a CMS that is **easy to use**, **secure**, and **powerful** at the same
+Aetheria was created because of the lack of a CMS that is** easy to use**, **secure**, and **powerful** at the same
 time.
 
-As Aetheria was created from the ground up using the latest technologies it is easy to maintain, updated, and follows
-the latest technologies and security measures.
+As Aetheria was created from the ground up using the latest technologies it is easy to maintain and update.
+It follows and will adhere to the latest technologies and security standards.
 
-Many CMSs are either too complicated to use or too simple to be useful. But Aetheria is different. It is designed to be
-simple and easy to use, yet powerful and secure.
-
+Many CMSs are either too complicated to use or too simple to be useful.
+But Aetheria is different.
+It is designed to be simple and easy to use, yet powerful and secure.
 Let's check some of Aetheria's main competitors:
 
-#### Wordpress
+#### WordPress
 
 | Pros                                                                                                                                                                                        | Cons                                                                                                                                                                                                                                                                  |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -75,7 +70,7 @@ Let's check some of Aetheria's main competitors:
 
 ## Aetheria's solution
 
-Aetheria's goal is to solve the main problem of all its competitors and improve on the usability and security of the
+Aetheria's goal is to solve the main problem of all its competitors and improve the usability and security of the
 overall CMS. How?
 
 Let's address the main problems of the competitors one by one:
@@ -83,16 +78,16 @@ Let's address the main problems of the competitors one by one:
 ### Plugins security and compatibility
 
 Aetheria's plugins can be developed by anyone but *- for plugins to get listed on the official marketplace -* each
-plugin is reviewed by the Aetheria's team to ensure that it is secure and compatible with the latest version of the CMS.
+plugin is reviewed by Aetheria's team to ensure that it is secure and compatible with the latest version of the CMS.
 Additionally, plugins:
 
-- Are analyzed in order to extract a permission list that the user can review before installing the plugin.
-- Are analyzed in order to extract a list of the plugin's hooks it attaches to.
-- Are analyzed in order to extract a list of security sensitive operations they are likely to perform.
+- Are analyzed to extract a permission list that the user can review before installing the plugin.
+- Are analyzed to extract a list of the plugin's hooks it attaches to.
+- Are analyzed to extract a list of security-sensitive operations they are likely to perform.
 
 ### Performance
 
-Aetheria's is a 2 tier CMS, meaning that it is composed of a headless-backend and a frontend.
+Aetheria is a 2 tier CMS, meaning that it is composed of a headless backend and a frontend.
 
 The backend is a headless CMS, meaning that it is only responsible for managing the content and exposing it through an
 API.
@@ -114,7 +109,7 @@ This architecture allows for a much better performance than the traditional CMSs
 hosted on a CDN (Content Delivery Network) for even better performance.
 
 Additionally, the 2 tier architecture allows for the frontend to be hosted on a different server than the backend, or
-even on-premise allowing for limitless scalability .
+even on-premise allowing for limitless scalability.
 
 :::info
 The frontend is not mandatory, you can use Aetheria's backend as a headless CMS and consume the API from any frontend
@@ -126,24 +121,22 @@ you want.
 The usage of a headless CMS allows for limitless customization and design flexibility, you can use any frontend, any
 framework or can opt into the default one.
 
-The builtin block editor, powered by [GrapeJs](https://grapesjs.com/) allows for a very flexible content creation
+The built-in block editor, powered by [GrapeJs](https://grapesjs.com/) allows for a very flexible content creation
 experience and customization, allowing for the creation of any kind of content with ease.
-Think of it like WordPress's Gutenberg editor but on steroids and with a lot more flexibility and customization
-options.
+Think of it like WordPress's Gutenberg editor but on steroids and with a lot more flexibility and customization options.
 
 ### Security
 
 Aetheria's backend is built with security in mind, it is built on top of NestJs, a framework that is built on top of
-ExpressJs and uses TypeScript as its main language.
-Sensible default security measures are in place and the framework is built with security in mind.
+ExpressJs and uses TypeScript as its main language. Sensible default security measures are in place and the framework is
+built with security in mind.
 
 Additionally, as the backend is a headless CMS, meaning that it is only responsible for managing the content and
-exposing
-it through an API, this means that the attack surface is much smaller than a traditional CMS.
+exposing it through an API, this means that the attack surface is much smaller than a traditional CMS.
 
-Plugins are also reviewed by the Aetheria's team to ensure that they are secure and compatible with the latest version
-of the CMS. Whenever a plugin is installed, the user is presented with a list of permissions that the plugin requires
-and can review them before installing the plugin.
+Plugins are also reviewed by Aetheria's team to ensure that they are secure and compatible with the latest version of
+the CMS. Whenever a plugin is installed, the user is presented with a list of permissions that the plugin requires and
+can review them before installing the plugin.
 
 :::caution
 A plugin can still be malicious and perform operations that are not listed in the permission list, but this is very
