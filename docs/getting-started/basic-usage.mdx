@@ -7,8 +7,94 @@ import TabItem from '@theme/TabItem';
 
 # Basic Usage
 
+In this section, we will explore the fundamental functionalities and workflows of Aetheria, enabling you to effectively
+utilize the CMS and create exceptional websites.
+
 ## Logging into the Aetheria dashboard
+
+:::info
+In order to log in to the Aetheria dashboard, you must have the CMS (frontend and backend) installed and running on your
+system.
+
+If you have not yet installed Aetheria, please refer to the [installation guide](/getting-started/installation).
+:::
+
+Upon the initial installation, Aetheria automatically sets up a default user with the email `john.doe@example.com` and
+password `password`.
+
+You can use these credentials to log in to the CMS and begin your journey with Aetheria.
+We highly recommend changing the default user's credentials for security purposes once you have access to the CMS.
+
+![Sample homepage](../../static/img/basic-usage/home.png)
+
+If you're using the official frontend, you can access the login page by navigating to `http://<your-domain>/admin` or
+clicking on one of the two blue buttons.
+
+The following form will be displayed letting you enter your credentials and log into the CMS.
+
+![Login form](../../static/img/basic-usage/login.png)
 
 ## Overview of the user interface and navigation
 
+The base installation of Aetheria includes two essential modules: the `User` module and the `Templates` module.
+The `User` module provides functionalities related to authentication, and basic profile settings while the `Templates`
+module allows you to manage and customize the website's templates for your content.
+
+Upon logging in, users are directed to the template listing page, where they can begin creating and managing their
+website's content using the available templates.
+
+![Base dashboard](../../static/img/basic-usage/dashboard.png)
+
+A default template named `home` is automatically created upon installation, and it is used to render the website's
+homepage.
+You can create additional templates to render other pages of your website, such as the `about` page, the `contact` page,
+etc.
+
+:::caution
+The `home` template is automatically assigned to the homepage of your website, it can be deleted, but it should not as
+otherwise the Next.js index page will be errored.
+
+> This behavior will be subject to change as of [v1.1.x](/roadmap).
+:::
+
 ## Creating and managing content
+
+New templates can be created by clicking on the `New Template` button in the top right corner of the template listing,
+this will open a new empty template in the editor.
+
+It's important to note that the template's name must be unique, and that (at least in the base installation) the name
+acts as the slug of the page, so it must be URL-friendly.
+
+:::info Additional specification about the template name
+If you're using the default frontend (**suggested**) the template name will be used to match the page's route, so if you
+create a template named `about` the page will be accessible at `http://<your-domain>/about`.
+
+Check out the following examples:
+
+- `home` will be accessible at `http://<your-domain>/`
+- `about` will be accessible at `http://<your-domain>/about`
+- `contact` will be accessible at `http://<your-domain>/contact`
+- `blog/post-slug` will be accessible at `http://<your-domain>/blog/post-slug`
+- `blog/2023-06-22/post-slug` will be accessible at `http://<your-domain>/blog/2023-06-22/post-slug`
+:::
+
+:::caution
+A known bug exists in the method used to match the page's route.
+
+Creating 3 templates named `example`, `example/` and `example/index.html` with 3 different pages, respectively
+rendered at `http://<your-domain>/example`, `http://<your-domain>/example/`
+and `http://<your-domain>/example/index.html`.
+
+The problem arises due to the fact that path ending with a slash are treated as directories, and the `index.html` file
+is treated as the index file of the directory, so you would expect `http://<your-domain>/example/`
+and `http://<your-domain>/example/index.html` to render the same page, but they don't.
+
+Due to modern browser optimization and the fact that the `index.html` file doesn't really exists, the browser will
+automatically redirect the user from `http://<your-domain>/example/` to `http://<your-domain>/example` finally resulting
+in the render of the template named `example` instead of `example/`.
+
+This means that the template named `example/` will never be rendered, and the template named `example/index.html` will
+be rendered only if the user manually types the URL in the browser including the ending `index.html`.
+
+> This behavior will be subject to change as of [v1.1.x](/roadmap).
+:::
