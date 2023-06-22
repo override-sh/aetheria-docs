@@ -1,0 +1,101 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Configuration
+
+In this section, we will explore how to customize and configure Aetheria to suit your specific needs.
+Aetheria offers a flexible and straightforward configuration process, empowering you to tailor the CMS according to your
+requirements.
+
+## Initial setup and configuration options
+
+Aetheria allows for most configuration options to be set via environment variables.
+This approach provides flexibility and simplifies the management of configuration settings.
+By defining environment variables, you can customize various aspects of Aetheria, such as database connection settings,
+security options, storage configurations, and more.
+Detailed guidance on the specific environment variables and their corresponding configuration options are defined in
+their own modules throughout the documentation.
+
+## Database setup and connection
+
+Aetheria simplifies the initial database setup process by leveraging MongoDB as the default database.
+With MongoDB's ease of use and scalability, you can seamlessly integrate Aetheria with an existing MongoDB instance or
+set up a new one.
+
+Since Aetheria utilizes MongoDB, you can bypass the hassle of additional database setup steps and get straight to
+building and managing your website's content.
+
+To streamline the process of populating your Aetheria instance with initial content, we provide a convenient way to seed
+your database.
+By utilizing the customizable `aetheria.seed.json` file, you can define the structure and content of your
+initial database entries.
+This allows for efficient data seeding, whether you are starting a new project or migrating an existing website to
+Aetheria.
+We will guide you through the configuration and usage of the `aetheria.seed.json` file, enabling you to set up your
+desired initial content effortlessly.
+
+## Configuration options
+
+Aetheria offers a wide range of configuration options, allowing you to customize the CMS to suit your specific needs.
+The following sections will provide an overview of the available configuration options and their corresponding use
+cases.
+
+Use the tabs to switch between the backend and frontend configuration options.
+
+<Tabs defaultValue="backend" groupId="system" queryString="system">
+<TabItem value="backend" label="Backend">
+
+### Backend configuration options
+
+#### Database configuration
+
+Aetheria utilizes MongoDB as the default database.
+You can customize the database connection settings by defining the following environment variables:
+
+| Environment Variable | Description                                              | Default Value |      Required      | Zod Rule                                                   |
+|----------------------|----------------------------------------------------------|---------------|:------------------:|------------------------------------------------------------|
+| `DB_HOST`            | Hostname of the MongoDB instance.                        | `localhost`   | :white_check_mark: | `z.string().min(1)`                                        |
+| `DB_PORT`            | Port to use when connecting to the MongoDB instance.     | `27017`       |        :x:         | `z.coerce.number().min(1024)`<br/>`.max(65535).optional()` |
+| `DB_USERNAME`        | Username to use when connecting to the MongoDB instance. | `root`        | :white_check_mark: | `z.string().min(1)`                                        |
+| `DB_PASSWORD`        | Password to use when connecting to the MongoDB instance. | `root`        | :white_check_mark: | `z.string().min(1)`                                        |
+| `DB_NAME`            | Name of the database to use.                             | `aetheria`    | :white_check_mark: | `z.string().min(1)`                                        |
+
+#### Security configuration
+
+Aetheria provides a wide range of security options to ensure that your website is protected from malicious attacks.
+You can customize the security settings by defining the following environment variables:
+
+| Environment Variable       | Description                                         | Default Value        |             Required              | Zod Rule                                                                                                                      |
+|----------------------------|-----------------------------------------------------|----------------------|:---------------------------------:|-------------------------------------------------------------------------------------------------------------------------------|
+| `BCRYPT_HASHING_ITERATION` | Number of iterations to use when hashing passwords. | `10`                 |                :x:                | `z.coerce.number().min(1).optional()`                                                                                         |
+| `BCRYPT_ALGORITHM_VERSION` | Version of the bcrypt algorithm to use.             | `b`                  |                :x:                | `z.enum(["a", "b"]).optional()`                                                                                               |
+| `JWT_ENCRYPTION`           | Encryption mode to use for JWTs.                    | `symmetric`          |        :white_check_mark:         | `z.enum(["symmetric", "asymmetric"])`                                                                                         |
+| `JWT_SECRET`               | Secret to use for JWT encryption.                   | `example-secret-key` | `JWT_ENCRYPTION === "symmetric"`  | `z.string().optional()`                                                                                                       |
+| `JWT_PUBLIC_KEY`           | Public key to use for JWT encryption.               | `undefined`          | `JWT_ENCRYPTION === "asymmetric"` | `z.string().optional()`                                                                                                       |
+| `JWT_PRIVATE_KEY`          | Private key to use for JWT encryption.              | `undefined`          | `JWT_ENCRYPTION === "asymmetric"` | `z.string().optional()`                                                                                                       |
+| `JWT_ALGORITHM`            | Algorithm to use for JWT encryption.                | `HS512`              |        :white_check_mark:         | `z.enum(["HS256","HS384","HS512","RS256","RS384","RS512",`<br/>`"ES256","ES384","ES512","PS256","PS384","PS512"]).optional()` |
+| `JWT_AUDIENCE`             | Audience to use for JWT encryption.                 | `aetheria`           |        :white_check_mark:         | `z.string().optional()`                                                                                                       |
+| `JWT_ISSUER`               | Issuer to use for JWT encryption.                   | `aetheria`           |        :white_check_mark:         | `z.string().optional()`                                                                                                       |
+| `JWT_EXPIRES_IN`           | Expiration time to use for JWT encryption.          | `2h`                 |        :white_check_mark:         | `z.string().optional()`                                                                                                       |
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+### Frontend configuration options
+
+#### Public configuration
+
+Aetheria provides some public configuration options to customize the frontend of your website.
+You can customize the public settings by defining the following environment variables:
+
+| Environment Variable      | Description              | Default Value           |      Required      |
+|---------------------------|--------------------------|-------------------------|:------------------:|
+| `NEXT_PUBLIC_APP_NAME`    | Name of the application. | `Aetheria`              | :white_check_mark: |
+| `NEXT_PUBLIC_BACKEND_URL` | URL of the backend.      | `http://localhost:3000` | :white_check_mark: |
+
+</TabItem>
+</Tabs>
