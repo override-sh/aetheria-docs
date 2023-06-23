@@ -5,6 +5,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 const img_to_figure = require("./src/remark/img-to-figure")
+const remark_abbr = require("remark-abbr")
 
 /** @type {import("@docusaurus/types").Config} */
 const config = {
@@ -39,6 +40,7 @@ const config = {
 					routeBasePath: "/",
 					remarkPlugins: [
 						img_to_figure,
+						remark_abbr,
 					],
 				},
 				blog:  false,

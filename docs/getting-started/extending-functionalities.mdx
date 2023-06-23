@@ -9,6 +9,99 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction to Aetheria's plugin system
 
+Aetheria's plugin system differs from in its approach to extension depending on the type of plugin.
+There are two types of plugins:
+
+- **Backend plugins**: are plugins that may be shipped with Aetheria and are specific to the backend.
+  These plugins are loaded by the backend at runtime and they are not exposed to the frontend. <br />
+  The simplest backend plugin is a [NestJS module](https://docs.nestjs.com/modules) that is dynamically registered but
+  plugins may become more complex and provide almost unlimited functionalities.
+- **Frontend plugins**: Frontend plugins are plugins that are loaded by the frontend at runtime and are exposed to the
+  user in the UI or using other methodologies. <br />
+  The simplest frontend plugins is a Next.js library exporting React components that are registered in the IOC container
+  and already used or setup in the base installation. <br />
+  Plugins may become far more complex and also register new routes and pages in the admin panel or other locations.
+
 ## Installing and activating plugins
 
-## Exploring popular plugins and their use cases
+Whatever the type of plugin, they are all installed and activated in the same way.
+Plugins are installed via the cli shipped in both the backend and frontend packages.
+
+<Tabs defaultValue="backend" groupId="system" queryString="system">
+<TabItem value="backend" label="Backend">
+
+```bash
+# local installation
+nest start cli plugin:install -n <plugin-name> -r <plugin-resolution-path>
+
+# npm installation
+nest start cli plugin:install -n <plugin-name> -N
+
+# tarball installation
+nest start cli plugin:install -n <plugin-name> -r <tarball-plugin-path> -t
+```
+
+</TabItem>
+<TabItem value="frontend" label="Frontend">
+
+```bash
+# local installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -r <plugin-resolution-path>
+
+# npm installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -N
+
+# tarball installation
+./apps/frontend-cli/bin/run plugin install -n <plugin-name> -r <tarball-plugin-path> -t
+```
+
+</TabItem>
+</Tabs>
+
+<details>
+<summary>FAQ</summary>
+
+#### Is there a way to install plugins without using the cli?
+
+Yes, there is.
+
+The cli is just a wrapper around a series of configuration tweaks that are required to install a plugin.
+Even though you can manually install plugins it is strongly discouraged to do so as the cli will take care of all the
+required steps for you without the risk of forgetting something.
+
+#### Which is the difference between `local`, `npm` and `tarball` installations?
+
+As you may have noticed, there are three different ways to install a plugin.
+The difference between them is the way the plugin is resolved and installed.
+
+As of v1.0.x ships with tree resolution strategies:
+
+- **local**: the plugin is resolved from the local filesystem. This is the default strategy.
+- **npm**: the plugin is resolved from the npm registry.
+- **tarball**: the plugin is resolved from a tarball file.
+
+:::caution
+Do not rely on the `tarball` nor on the `npm` strategy until the publishing of the official APM as they are not yet
+supported because of security concerns.
+:::
+
+#### How do I know which strategy to use?
+
+As of v1.0.x the only supported strategy is the `local` one.
+The `npm` and `tarball` strategies are not yet supported because of security concerns.
+
+As of the release of the official APM, the shipped plugin manager will choose the correct strategy for you
+based on the plugin and data available.
+
+</details>
+
+### Activating plugins
+
+As of v1.0.x installed plugins are always activated.
+In order to disable a plugin you have to uninstall it.
+
+:::caution
+As of v1.1.x this behaviour will change and plugins will be installed and activated by default but they can be disabled.
+:::
+
+*[APM]: Aetheria Plugins Marketplace

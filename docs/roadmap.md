@@ -9,5 +9,6 @@ sidebar_position: 4
 
 - [ ] feat: lock the removal of the special `home` template
 - [ ] bug: [Issue #18](https://github.com/override-sh/aetheria-frontend/issues/18)
+- [ ] feat: Allow to disable plugins without uninstalling them
 
 </details>
