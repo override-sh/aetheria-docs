@@ -46,3 +46,17 @@ figure {
     align-items: center;
     justify-content: center;
 }
+
+/**
+ * Detail box used inside caution notes
+ * START
+ */
+.caution-detail-box {
+    background-color: transparent;
+    border-color: #E6A700!important;
+}
+/** this changes the color of the border displayed when detail box is open */
+.caution-detail-box div div {
+    border-color: #E6A700!important;
+}
+/** END */

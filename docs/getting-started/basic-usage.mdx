@@ -76,10 +76,11 @@ Check out the following examples:
 - `contact` will be accessible at `http://<your-domain>/contact`
 - `blog/post-slug` will be accessible at `http://<your-domain>/blog/post-slug`
 - `blog/2023-06-22/post-slug` will be accessible at `http://<your-domain>/blog/2023-06-22/post-slug`
-:::
+  :::
 
 :::caution
-A known bug exists in the method used to match the page's route.
+<details className="caution-detail-box">
+<summary>A known bug exists in the method used to match the page's route</summary>
 
 Creating 3 templates named `example`, `example/` and `example/index.html` with 3 different pages, respectively
 rendered at `http://<your-domain>/example`, `http://<your-domain>/example/`
@@ -97,4 +98,68 @@ This means that the template named `example/` will never be rendered, and the te
 be rendered only if the user manually types the URL in the browser including the ending `index.html`.
 
 > This behavior will be subject to change as of [v1.1.x](/roadmap).
+
+</details>
 :::
+
+### The template editor
+
+The template editor is the core of the CMS, it allows you to create and manage the content of your website.
+
+![Template editor](../../static/img/basic-usage/editor.png)
+
+The template editor is composed of three main sections:
+
+- **Header**: the header contains the main navigation buttons.
+- **Sidebar**: the sidebar contains all the utilities that can be used to create the content of the page.
+- **Canvas**: the canvas is the area where the content of the page is rendered, it's also where you can interact with
+  the content and edit it.
+
+#### Header
+
+The header contains the main navigation buttons, plugins may add additional buttons to the header.
+
+The header is visually divided into three sections: the left section, the center section, and the right section.
+
+##### Left section
+
+The left section contains the following buttons:
+
+- **Back**: the back button allows you to go back to the template listing page.
+- **Menu**: the menu button allows you to define template properties such as the template's name.
+- **Layers**: the layers button allows you to manage the layers of the page, layers are used to define the structure of
+  the page, and they can be nested to create complex layouts.
+- **Styles**: the styles button allows you to manage the styles of the page, styles are used to define the appearance of
+  the page.
+- **Settings**: the settings button allows you to manage the settings of the *currently* selected component, settings
+  are used to define the behavior of the component and are always component specific.<br/>
+  Some components may not have any settings (such as the body component) or may have conditional settings, displayed
+  only in certain cases.
+- **Blocks**: the blocks button allows you to manage the blocks of the page, blocks are used to define the content of
+  the page, and they can be nested to create complex content.<br/>
+  Blocks can be added to the page by dragging them from the sidebar and dropping them in the canvas.
+
+##### Center section
+
+The center section contains the layout selectors, the layout selectors allow you to change the layout of the page from
+desktop to mobile and vice versa.
+
+##### Right section
+
+The right section contains the following buttons:
+
+- **Display borders**: the display borders button allows you to toggle the display of the borders of the components.
+  As pages can be composed of many nested components, it can be difficult to understand the structure of the page, the
+  display borders button allows you to visualize the structure of the page by displaying the borders of the components
+  easing the editing process.
+- **Fullscreen**: the fullscreen button allows you to toggle the fullscreen mode of the editor, this is useful when
+  editing the page on a small screen.
+- **Preview**: the preview button allows you to preview the page hiding the sidebar and all the header buttons.
+- **Undo**: the undo button allows you to undo the last action.
+- **Redo**: the redo button allows you to redo the last action.
+- **Import from code**: the import from code button allows you to import a page from a raw html code.
+- **Export to code**: the export to code button allows you to see the raw html code of the page in a modal and copy it
+  to the clipboard. <br/>
+  Note that the code is not editable, it's only meant to be used as a reference.<br/>
+  Also note that the code is not minified, it's only formatted to be more readable, the actual code used by the website
+  may be slightly different because of transformation or performance optimizations applied by plugins.
