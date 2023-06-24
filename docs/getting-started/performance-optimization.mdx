@@ -7,8 +7,102 @@ import TabItem from '@theme/TabItem';
 
 # Performance Optimization
 
-## Identifying performance bottlenecks in Aetheria
+This documentation page will guide you through the performance optimization techniques and best practices for Aetheria.
+By implementing these optimizations, you can ensure optimal speed, efficiency, and responsiveness for your website.
 
-## Caching strategies and optimizations
+## Built-in Performance Optimizations
 
-## Tips for optimizing website performance and loading speed
+Aetheria incorporates several performance optimizations by default, which contribute to a fast and efficient CMS
+experience.
+
+### Minimal Base Installation:
+
+The base installation of Aetheria includes only the strictly required functionalities.
+This approach helps reduce the overall bundle size, resulting in faster loading times and improved performance.
+
+### Template Pre-rendering
+
+Templates in Aetheria are pre-rendered each time they are updated.
+
+This ensures that the latest version of the template is readily available and eliminates the need for unnecessary
+requests to the backend, enhancing overall performance.
+
+### Server-side Rendering with Next.js
+
+Aetheria leverages Next.js for server-side rendering (SSR) of its pages.
+
+By utilizing server-side components, Aetheria enables efficient pre-rendering and optimization of metadata, leading to
+improved performance and SEO benefits.
+
+### ETag Usage
+
+Aetheria utilizes ETags, or entity tags, to optimize caching and avoid unnecessary requests to both the frontend and the
+backend.
+
+ETags allow for efficient content validation, reducing bandwidth usage and improving response times.
+
+### Image Optimization
+
+Aetheria uses the `next/image` component to optimize images.
+
+This component automatically resizes and compresses images to the optimal size, resulting in faster loading times and
+improved performance.
+
+### Lazy Loading
+
+Aetheria implements lazy loading for images and other assets.
+
+This technique ensures that only the required assets are loaded, reducing the overall bandwidth usage and loading times.
+
+### Code Splitting
+
+Aetheria utilizes code splitting to optimize the loading of JavaScript bundles. This technique allows for the
+distribution of JavaScript code across multiple files, which are then loaded on demand. 
+
+This approach helps reduce the initial loading time of the website, resulting in lower FCP/LCP.
+
+### Automatic Static Optimization
+
+Aetheria automatically optimizes static pages by pre-rendering them at build time. 
+
+This technique ensures that the static pages are readily available, eliminating the need for unnecessary requests to the
+backend.
+
+### Templates minification
+
+Aetheria minifies the templates at build time, reducing their overall size and improving performance.
+
+### Client side request caching
+
+Aetheria caches the requests made to the backend on the client side, reducing the overall bandwidth usage and the loading
+times between pages and subsequent requests.
+
+## Additional Performance Optimization Techniques
+
+Apart from the built-in optimizations, users can implement additional techniques to further enhance the overall
+performance of their Aetheria-based websites:
+
+### CDN Deployment
+
+Deploying the Aetheria frontend using a content delivery network (CDN), such as Cloudflare, can significantly improve
+performance.
+
+CDNs distribute your website's assets across multiple global servers, ensuring faster content delivery to users
+worldwide.
+
+### Horizontal Scaling of the Backend
+
+To handle high traffic or large datasets, you can horizontally scale the Aetheria backend.
+This involves adding more server instances to your infrastructure, allowing for better load distribution and improved
+performance.
+
+Implementing these performance optimization techniques will help you deliver a seamless and lightning-fast user
+experience for your Aetheria-powered websites.
+
+By combining the built-in optimizations with additional strategies, you can ensure that your website performs optimally
+under various conditions.
+
+*[CDN]: Content Delivery Network
+*[FCP/LCP]: First Contentful Paint / Largest Contentful Paint
+*[SSR]: Server-side Rendering
+*[SEO]: Search Engine Optimization
