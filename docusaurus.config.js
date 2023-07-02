@@ -4,8 +4,8 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-const img_to_figure = require("./src/remark/img-to-figure")
-const remark_abbr = require("remark-abbr")
+const img_to_figure = require("./src/remark/img-to-figure");
+const remark_abbr = require("remark-abbr");
 
 /** @type {import("@docusaurus/types").Config} */
 const config = {
@@ -54,8 +54,114 @@ const config = {
 	themeConfig:
 	/** @type {import("@docusaurus/preset-classic").ThemeConfig} */
 		({
+			colorMode: {
+				defaultMode:               "dark",
+				disableSwitch:             true,
+				respectPrefersColorScheme: false,
+			},
+			metadata:  [
+				{
+					name:    "twitter:card",
+					content: "summary_large_image",
+				},
+				{
+					name:    "twitter:site",
+					content: "@Overrid68880391",
+				},
+				{
+					name:    "twitter:creator",
+					content: "@Overrid68880391",
+				},
+				{
+					name:    "twitter:title",
+					content: "Aetheria Docs",
+				},
+				{
+					name:    "twitter:description",
+					content: "The Overpowered and Extensible Open-Source Solution entirely built in typescript",
+				},
+				{
+					name:    "twitter:image",
+					content: "https://aetheria-docs.override.sh/img/aetheria-banner-1600x600.png",
+				},
+				{
+					name:    "og:title",
+					content: "Aetheria Docs",
+				},
+				{
+					name:    "og:description",
+					content: "The Overpowered and Extensible Open-Source Solution entirely built in typescript",
+				},
+				{
+					name:    "og:image",
+					content: "https://aetheria-docs.override.sh/img/aetheria-banner-1600x600.png",
+				},
+				{
+					name:    "og:url",
+					content: "https://aetheria-docs.override.sh",
+				},
+				{
+					name:    "og:site_name",
+					content: "Aetheria Docs",
+				},
+				{
+					name:    "og:locale",
+					content: "en_US",
+				},
+				{
+					name:    "og:type",
+					content: "website",
+				},
+				{
+					name:    "description",
+					content: "The Overpowered and Extensible Open-Source Solution entirely built in typescript",
+				},
+				{
+					name:    "keywords",
+					content: "aetheria, docs, documentation, aetheria docs, aetheria documentation, " +
+					         "aetheria documentation site, aetheria docs site, aetheria docs website, " +
+					         "aetheria documentation website, aetheria documentation site, cms, typescript, " +
+					         "cms documentation, override.sh, override",
+				},
+				{
+					name:    "robots",
+					content: "index, follow",
+				},
+				{
+					name:    "googlebot",
+					content: "index, follow",
+				},
+				{
+					name:    "bingbot",
+					content: "index, follow",
+				},
+				{
+					name:    "theme-color",
+					content: "#262833",
+				},
+				{
+					name:    "msapplication-TileColor",
+					content: "#262833",
+				},
+				{
+					name:    "application-name",
+					content: "Aetheria Docs",
+				},
+				{
+					name:    "apple-mobile-web-app-title",
+					content: "Aetheria Docs",
+				},
+				{
+					name:    "apple-mobile-web-app-capable",
+					content: "yes",
+				},
+				{
+					name:    "apple-mobile-web-app-status-bar-style",
+					content: "black-translucent",
+				},
+			],
 			// Replace with your project's social card
-			image:           "img/docusaurus-social-card.jpg",
+			image:           "img/aetheria-banner-1600x600.png",
 			navbar:          {
 				title: "Aetheria Docs",
 				logo:  {
@@ -65,12 +171,30 @@ const config = {
 				items: [
 					{
 						type:      "docSidebar",
-						sidebarId: "Introduction",
+						sidebarId: "Documentation",
 						position:  "left",
 						label:     "Documentation",
 					},
 					{
-						href:     "https://github.com/override-sh/aetheria-docs",
+						type:      "docSidebar",
+						sidebarId: "Packages",
+						position:  "left",
+						label:     "Packages",
+					},
+					{
+						type:      "docSidebar",
+						sidebarId: "Plugins",
+						position:  "left",
+						label:     "Plugins",
+					},
+					{
+						type:      "docSidebar",
+						sidebarId: "Docker",
+						position:  "left",
+						label:     "Docker",
+					},
+					{
+						href:     "https://github.com/override-sh/aetheria",
 						label:    "GitHub",
 						position: "right",
 					},
@@ -90,18 +214,30 @@ const config = {
 								label: "Getting Started",
 								to:    "/getting-started",
 							},
+							{
+								label: "Advanced",
+								to:    "/advanced",
+							},
+							{
+								label: "Docker",
+								to:    "/docker",
+							},
 						],
 					},
 					{
 						title: "Community",
 						items: [
 							{
-								label: "Stack Overflow",
-								href:  "https://stackoverflow.com/questions/tagged/aetheria",
-							},
-							{
 								label: "Twitter",
 								href:  "https://twitter.com/Overrid68880391",
+							},
+							{
+								label: "Github",
+								href:  "https://github.com/override-sh/aetheria",
+							},
+							{
+								label: "Stack Overflow",
+								href:  "https://stackoverflow.com/questions/tagged/aetheria",
 							},
 						],
 					},
@@ -109,21 +245,17 @@ const config = {
 						title: "More",
 						items: [
 							{
-								label: "Monorepo",
-								href:  "https://github.com/override-sh/aetheria-docs",
+								label: "Packages",
+								to:    "/packages",
 							},
 							{
-								label: "Frontend",
-								href:  "https://github.com/override-sh/aetheria-frontend",
-							},
-							{
-								label: "Backend",
-								href:  "https://github.com/override-sh/aetheria-headless",
+								label: "Plugins",
+								to:    "/plugins",
 							},
 						],
 					},
 				],
-				copyright: `Copyright © ${ new Date().getFullYear() } Override.`,
+				copyright: `Copyright © ${ new Date().getFullYear() } Override`,
 			},
 			prism:           {
 				theme:     lightCodeTheme,
