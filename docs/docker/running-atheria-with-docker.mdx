@@ -1,0 +1,128 @@
+---
+sidebar_position: 2
+---
+
+# Running Aetheria with Docker
+
+In this chapter, we will guide you through the process of running Aetheria in a Docker environment.
+By following these steps, you will be able to set up and deploy Aetheria with ease.
+
+## Prerequisites
+
+Before we begin, ensure that you have the following prerequisites installed on your system:
+
+- Docker: Make sure you have Docker installed and properly configured for your operating system.
+  You can download Docker from the [official website](https://www.docker.com/) and follow the installation instructions
+  specific to your platform.
+
+## Obtaining Aetheria Docker Images
+
+To run Aetheria with Docker, we provide pre-built Docker images for [different presets](presets/README.mdx).
+Each image contains all the necessary components and dependencies.
+These images are available on the Docker Hub, making it convenient to pull and use them in your environment.
+
+To obtain the Aetheria Docker images, open your terminal or command prompt and execute the following command:
+
+```bash
+docker pull overridesoft/aetheria-headless:latest-<preset>
+```
+
+This command will fetch the latest version of the Aetheria Docker image and store it locally on your system.
+
+## Configuring Aetheria with Docker Compose
+
+To simplify the setup and configuration process, we provide a Docker Compose configuration file that defines the
+required services and their configurations. Docker Compose allows you to manage multi-container applications and define
+their interdependencies.
+
+1. Create a new directory for your Aetheria project, if you haven't done so already.
+
+2. Inside the project directory, create a new file named `docker-compose.yml`.
+
+3. Open the `docker-compose.yml` file in a text editor and copy the following configuration:
+
+```yaml
+services:
+  frontend:
+    # The frontend image is not available as a Docker image. You will need to build it locally.
+    # See the "Building frontend images" chapter for instructions.
+    image: aetheria-frontend:latest
+    environment:
+      NEXT_PUBLIC_APP_NAME: Aetheria
+      NEXT_PUBLIC_BACKEND_URL: http://headless:3001
+    depends_on:
+      - headless
+    ports:
+      - "3000:3000"
+
+  headless:
+    image: overridesoft/aetheria-headless:latest-base
+    restart: unless-stopped
+    environment:
+      DB_HOST: mongo
+      DB_PORT: 27017
+      DB_USERNAME: <mongo-db-username>
+      DB_PASSWORD: <mongo-db-password>
+      DB_DATABASE: aetheria
+
+      JWT_ENCRYPTION: "symmetric"
+      JWT_SECRET: "<randomly-generate-a-key>"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: <mongo-db-username>
+      MONGO_INITDB_ROOT_PASSWORD: <mongo-db-password>
+```
+
+4. Save the file and exit the text editor.
+
+:::note Docker compose configuration
+The above configuration contains placeholders for the MongoDB username and password, the preset and the jwt secret.
+You will need to replace these placeholders with your own values.
+You can also change the port mappings if necessary.
+
+The configuration above is defined as an example for common presets.
+:::
+
+:::info Environment variables
+The `environment` section of the configuration defines the environment variables for each service.
+These variables are used to configure the services and define their behavior.
+
+You can find a list of all available environment variables for your preset in the preset's page.
+:::
+
+## Starting Aetheria with Docker Compose
+
+To start Aetheria with Docker Compose, follow these steps:
+
+1. Open a terminal or command prompt and navigate to the directory where you created the `docker-compose.yml` file.
+
+2. Execute the following command to start Aetheria:
+
+```bash
+docker compose up -d
+```
+
+This command will start the Aetheria and MongoDB containers in detached mode, running them in the background.
+
+3. Wait for the containers to start and initialize. You can monitor the progress by viewing the logs with the following
+   command:
+
+```bash
+docker compose logs -f
+```
+
+4. Once Aetheria has started successfully, you can access it by opening your web browser and navigating
+   to `http://localhost:3000`. You should see the Aetheria interface.
+
+Congratulations! You have successfully run Aetheria with Docker.
+You can now begin exploring its features and start building your websites using this powerful and flexible CMS.
+
