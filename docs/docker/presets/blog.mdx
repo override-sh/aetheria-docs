@@ -1,0 +1,40 @@
+# Blog Preset
+
+:::caution Work in progress
+This preset is currently a work in progress.
+
+A generator is not yet available for this preset, and some features might not be fully implemented or optimized.
+:::
+
+The *blog* preset is designed specifically for creating and managing blog websites.
+It includes additional features and configurations optimized for blog-style content, such as article management,
+categories, tags, and author profiles.
+
+Once the official releases are ready you can use the blog preset by pulling the Docker image with the following command:
+
+```bash
+docker pull overridesoft/aetheria-headless:latest-blog
+```
+
+Versions of the *blog* preset are also available for specific Aetheria versions. To pull a specific version, append the
+version number to the image name, for example:
+
+```bash
+docker pull overridesoft/aetheria-headless:1.0.0-blog
+```
+
+## Frontend blog preset
+
+Due to the nature of the optimization process in place in the frontend, the frontend image is not available as a Docker
+image.
+However, you can still use the frontend image with Docker by building the frontend preset locally and running it with
+the *blog* backend preset.
+
+To build the frontend preset, follow the instructions in the [Building frontend images](../building-frontend-images.mdx)
+chapter.
+
+## Environment variables
+
+:::danger Missing environment variables
+Not yet made available, will be published as soon as the preset gets released!
+:::

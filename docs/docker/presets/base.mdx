@@ -1,0 +1,33 @@
+# Base Preset
+
+The *base* preset provides the core functionality of Aetheria, making it suitable for general-purpose website
+development. It includes essential features and components for content management, template creation, and website
+customization.
+
+To use the *base* preset, pull the Docker image with the following command:
+
+```bash
+docker pull overridesoft/aetheria-headless:latest-base
+```
+
+Versions of the *base* preset are also available for specific Aetheria versions. To pull a specific version, append the
+version number to the image name, for example:
+
+```bash
+docker pull overridesoft/aetheria-headless:1.0.0-base
+```
+
+## Frontend base preset
+
+Due to the nature of the optimization process in place in the frontend, the frontend image is not available as a Docker
+image.
+However, you can still use the frontend image with Docker by building the frontend preset locally and running it with
+the *base* backend preset.
+
+To build the frontend preset, follow the instructions in the [Building frontend images](../building-frontend-images.mdx)
+chapter.
+
+## Environment variables
+
+The base preset includes only the most essential environment variables. For a complete list of environment variables,
+see the [Configuration](../../getting-started/configuration.mdx#configuration-options) chapter in the documentation.
