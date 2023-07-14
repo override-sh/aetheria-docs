@@ -1,0 +1,25 @@
+# Plugin list command
+
+## Overview
+
+The `aetheria plugin list` list the installed plugins and their versions.
+
+## Usage
+
+```bash
+aetheria plugin list [flags]
+```
+
+## Flags
+
+| Flag                                    | Description                                   |
+|:----------------------------------------|:----------------------------------------------|
+| `-h`, `--help`                          | Help for the `aetheria docker build` command. |
+| `-d`, `--debug`                         | Enable debug mode.                            |
+| `-c <value>`, `--configuration <value>` | The path to the plugins configuration file.   |
+
+## Examples
+
+```bash title="List the installed plugins for the frontend app"
+aetheria plugin list -c ./apps/frontend/aetheria.json
+```

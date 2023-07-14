@@ -34,4 +34,35 @@ For the sake of simplicity, we will use the *base* preset as an example in this 
 Feel free to replace the preset name with your chosen preset name.
 :::
 
-To build the frontend preset, follow these steps:
+To build the frontend preset, you should use the builtin command provided with the `@aetheria/cli` package.
+
+The installation of the is as ease as running the following command:
+
+```bash title="Installing the @aetheria/cli package"
+npm install -g @aetheria/cli
+```
+
+This will install the `aetheria` command globally on your system.
+
+Once the installation is complete, you can run the following command to build the frontend preset:
+
+```bash title="Building the frontend preset from monorepo folder"
+aetheria docker build frontend base -f ../frontend/
+```
+
+This command will build the frontend preset and tag it with the `overridesoft/aetheria-frontend:base` tag.
+
+### Command pragma
+
+The command above may be unclear as lots of assumptions are made. Let's break it down:
+
+- `aetheria docker build`: This is the command that instructs the `aetheria` CLI to build a Docker image.
+- `frontend`: This is the type of the image that we want to build. In this case, we want to build a frontend image. You
+  can also build a backend image by replacing `frontend` with `backend`.
+- `base`: This is the preset name. You can replace it with your chosen preset name.
+- `-f ../frontend/`: This is the path to the frontend project folder. You can replace it with your own path. In the
+  above example, we assume that the frontend project folder is located relative to the cli project in the official
+  monorepo.
+  If you are building the frontend from within the frontend project you may replace it, for example, with `.`.
+
+More information about the `aetheria docker build` command can be found in the [CLI reference](../cli/docker/build.mdx).

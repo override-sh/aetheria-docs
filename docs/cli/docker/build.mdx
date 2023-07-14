@@ -1,0 +1,39 @@
+# Docker build command
+
+## Overview
+
+The `aetheria docker build` command builds production ready Docker images.
+
+## Usage
+
+```bash
+aetheria docker build [arguments] [flags]
+```
+
+## Arguments
+
+| Argument  | Description                                                                         |
+|:----------|:------------------------------------------------------------------------------------|
+| `project` | The project to build, can be `frontend` or `backend`                                |
+| `image`   | The image to build, can be one of the [available docker presets](../docker/presets) |
+
+## Flags
+
+| Flag                                     | Description                                                                                                                                                                                                                                                                                                                   |
+|:-----------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `-h`, `--help`                           | Help for the `aetheria docker build` command.                                                                                                                                                                                                                                                                                 |
+| `-d`, `--debug`                          | Enable debug mode.                                                                                                                                                                                                                                                                                                            |
+| `-f <value>`, `--project_folder <value>` | The folder where the project to build is located.                                                                                                                                                                                                                                                                             |
+| `-v <value>`, `--version <value>`        | The version to build. We strongly suggest to use semantic versioning number but any value is accepted, note that this will be placed before the `-<preset>` part of the docker image tag. <br/>Defaults to `1.0.0`                                                                                                            |
+| `--build`, `--no-build`                  | Whether to build the project source code before creating the image. <br/>Default to `true`.                                                                                                                                                                                                                                   |
+| `--publish`, `--no-publish`              | Whether to publish the image to the registry. Note that the images are named as `overridesoft/aetheria-<frontend or headless>` meaning the default publish command will try to push to the official Aetheria's registry. <br/>By default the publishing is always skipped for the `frontend` project. <br/>Default to `true`. |
+
+## Examples
+
+```bash title="Build the frontend base image where the frontend is located at ../frontend/"
+aetheria docker build frontend base -f ../frontend/
+```
+
+```bash title="Build and publish the backend base image with version 1.0.1 where the headless backend is located at ../headless/"
+aetheria docker build backend base -v 1.0.1 -f ../headless/
+```

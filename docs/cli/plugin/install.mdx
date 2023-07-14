@@ -1,0 +1,33 @@
+# Plugin install command
+
+## Overview
+
+The `aetheria plugin install` install a plugin.
+
+## Usage
+
+```bash
+aetheria plugin install [flags]
+```
+
+## Flags
+
+| Flag                                      | Description                                                  |
+|:------------------------------------------|:-------------------------------------------------------------|
+| `-h`, `--help`                            | Help for the `aetheria docker build` command.                |
+| `-d`, `--debug`                           | Enable debug mode.                                           |
+| `-a <value>`, `--app_path <value>`        | Path to the project source directory.                        |
+| `-c <value>`, `--configuration <value>`   | Path to the plugins configuration file.                      |
+| `-n <value>`, `--name <value>`            | Name of the plugin to install.                               |
+| `-p <value>`, `--project <value>`         | The project type, accepted values are `frontend`, `backend`. |
+| `-r <value>`, `--resolution_path <value>` | path to the plugins resolution directory.                    |
+
+## Examples
+
+```bash title="Install the plugin '@aetheria/plugin-example-frontend', locally installed as npm package, in the frontend app"
+aetheria plugin install -c ./apps/frontend/aetheria.json \
+						-n @aetheria/plugin-example-frontend \
+						-p frontend \
+						-a ./apps/frontend/app \
+						-r ./node_modules/@aetheria/plugin-example-frontend
+```

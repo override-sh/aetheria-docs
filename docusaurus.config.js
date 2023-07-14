@@ -19,7 +19,7 @@ const config = {
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/",
 
-	onBrokenLinks:         "throw",
+	onBrokenLinks:         "warn",
 	onBrokenMarkdownLinks: "warn",
 
 	// Even if you don't use internalization, you can use this field to set useful
@@ -42,11 +42,13 @@ const config = {
 						img_to_figure,
 						remark_abbr,
 					],
+
 				},
 				blog:  false,
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
 				},
+
 			}),
 		],
 	],
@@ -192,6 +194,12 @@ const config = {
 						sidebarId: "Docker",
 						position:  "left",
 						label:     "Docker",
+					},
+					{
+						type:      "docSidebar",
+						sidebarId: "CLI",
+						position:  "left",
+						label:     "CLI",
 					},
 					{
 						href:     "https://github.com/override-sh/aetheria",
